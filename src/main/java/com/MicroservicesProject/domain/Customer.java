@@ -3,9 +3,9 @@ package com.MicroservicesProject.domain;
 
 public class Customer {
 
-    private int id;
+    private final int id;
     private String name;
-    private String username;
+    private final String username;
     private String password;
 
     public Customer(int id, String name, String username, String password) {
