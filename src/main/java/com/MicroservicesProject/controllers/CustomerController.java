@@ -4,12 +4,14 @@ import com.MicroservicesProject.domain.Customer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 public class CustomerController {
 
     private List<Customer> customers = new ArrayList<Customer> (List.of(
@@ -38,7 +40,13 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<?> addCustomer(@RequestBody Customer c) {
         customers.add(c);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Customer created successfully: " + c.getUsername());
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{username}")
+                .buildAndExpand(c.getUsername())
+                .toUri();
+
+        return ResponseEntity.created(location).body(c);
     }
 
     @PutMapping("/{username}")
@@ -47,10 +55,10 @@ public class CustomerController {
             if (v.getUsername().equalsIgnoreCase(c.getUsername())) {
                 v.setName(c.getName());
                 v.setPassword(c.getPassword());
-                return ResponseEntity.ok(v);
+                return ResponseEntity.noContent().build();
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer username not found: " + c.getUsername());
+        return ResponseEntity.notFound().build();
     }
 
     @PatchMapping("/{}id")
@@ -65,11 +73,11 @@ public class CustomerController {
                     v.setPassword(c.getPassword());
                 }
 
-                return ResponseEntity.ok("Customer modified successfully: " + v.getUsername());
+                return ResponseEntity.noContent().build();
 
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer username not found: " + c.getUsername());
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
@@ -77,10 +85,10 @@ public class CustomerController {
         for (Customer v: customers) {
             if (v.getId() == id) {
                 customers.remove(v);
-                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("");
+                return ResponseEntity.noContent().build();
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found");
+        return ResponseEntity.notFound().build();
     }
     
 }
