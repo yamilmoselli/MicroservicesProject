@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Monitor",
+    "price": 600.0,
+    "quantity": 15
+  },
+  {
+    "id": 2,
+    "name": "SSD",
+    "price": 20.0,
+    "quantity": 50
+  },
+  {
+    "id": 3,
+    "name": "Mechanic Keyboard",
+    "price": 40.0,
+    "quantity": 30
+  },
+  {
+    "id": 4,
+    "name": "Smartwatch",
+    "price": 700.0,
+    "quantity": 25
+  }
+]
