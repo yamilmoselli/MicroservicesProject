@@ -10,8 +10,9 @@ import java.util.List;
 
 /*
  Usar @ConditionalOnProperty hace que no carguen ambos servicios a la hora de correr la app, lo que ayuda
- a que se ejecute mas rapido.
+ a que se inicie mas rapido.
  @Primary y @Qualifier cumplen la misma funcion pero ambos servicios cargaran cuando se corra la app.
+ Con @Lazy hago que los beans de servicio no carguen hasta que se los necesite.
  */
 
 @Service

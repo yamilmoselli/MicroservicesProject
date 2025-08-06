@@ -1,5 +1,6 @@
 package com.MicroservicesProject.controllers;
 
+import com.MicroservicesProject.configurations.ExternalizedConfigurations;
 import com.MicroservicesProject.domain.Product;
 import com.MicroservicesProject.service.ProductService;
 import com.MicroservicesProject.service.ProductServiceImpl;
@@ -20,8 +21,12 @@ public class ProductController {
     @Lazy
     private ProductService ProductsService;
 
+    @Autowired
+    private ExternalizedConfigurations externalizedConfigurations;
+
     @GetMapping
     public ResponseEntity<?> getProducts() {
+        System.out.println(externalizedConfigurations.toString());
         List<Product> products = ProductsService.getProducts();
         return ResponseEntity.ok(products);
     }
