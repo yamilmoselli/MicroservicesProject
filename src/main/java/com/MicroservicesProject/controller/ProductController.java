@@ -1,11 +1,9 @@
-package com.MicroservicesProject.controllers;
+package com.MicroservicesProject.controller;
 
 import com.MicroservicesProject.configurations.ExternalizedConfigurations;
 import com.MicroservicesProject.domain.Product;
 import com.MicroservicesProject.service.ProductService;
-import com.MicroservicesProject.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

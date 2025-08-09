@@ -1,4 +1,4 @@
-package com.MicroservicesProject.controllers;
+package com.MicroservicesProject.controller;
 
 import com.MicroservicesProject.domain.Customer;
 import org.springframework.http.HttpStatus;
