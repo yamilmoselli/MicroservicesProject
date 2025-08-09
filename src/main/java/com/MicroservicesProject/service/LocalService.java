@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface LocalService {
 
-    List<Local> getAllLocals();
+    List<Local> findAllLocals();
     Local saveLocal(Local local);
     Local updateLocal(Long id, Local local);
     void deleteLocal(Long id);

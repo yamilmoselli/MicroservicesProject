@@ -13,7 +13,7 @@ public class LocalServiceImpl implements LocalService {
     LocalRepository localRepository;
 
     @Override
-    public List<Local> getAllLocals() {
+    public List<Local> findAllLocals() {
         return localRepository.findAll();
     }
 

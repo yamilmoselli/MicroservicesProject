@@ -61,7 +61,7 @@ public class CustomerController {
         return ResponseEntity.notFound().build();
     }
 
-    @PatchMapping("/{}id")
+    @PatchMapping("/{id}")
     public ResponseEntity<?> patchCustomer(@RequestBody Customer c) {
         for (Customer v: customers) {
             if (v.getId() == c.getId()) {
